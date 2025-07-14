@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Geolocation Example</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    #map {
+      background-color: yellow;
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #console {
+      background-color: #ccc;
+      padding: 10px;
+      height: 10vh;
+      overflow-y: auto;
+    }
+    #locateBtn {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 10;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<button id="locateBtn">Show my location</button>
+<div id="map">Your location will appear here</div>
+<div id="console">Console output</div>
+
+<script>
+  const locateBtn = document.getElementById('locateBtn');
+  const mapDiv = document.getElementById('map');
+  const consoleDiv = document.getElementById('console');
+
+  locateBtn.addEventListener('click', () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          const { latitude, longitude } = position.coords;
+          mapDiv.textContent = `Latitude: ${latitude}, Longitude: ${longitude}`;
+          consoleDiv.textContent = 'Location retrieved successfully!';
+        },
+        error => {
+          consoleDiv.textContent = `Error: ${error.message}`;
+        }
+      );
+    } else {
+      consoleDiv.textContent = 'Geolocation is not supported by this browser.';
+    }
+  });
+</script>
+
+</body>
+</html>
