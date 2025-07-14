@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canvas Rectangle Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background: #f0f0f0;
+    }
+    canvas {
+      border: 1px solid #ccc;
+      display: block;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Draw Green Rectangle on Canvas</h1>
+  <canvas id="canvas" width="300" height="200"></canvas>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    // Set fill color to green
+    ctx.fillStyle = 'green';
+
+    // Draw rectangle: x=10, y=10, width=150, height=100
+    ctx.fillRect(10, 10, 150, 100);
+  </script>
+
+</body>
+</html>
