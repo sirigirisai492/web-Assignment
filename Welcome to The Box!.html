@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to The Box</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+    #banner {
+      background-color: purple;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 2em;
+    }
+    #console {
+      background-color: #ddd;
+      padding: 10px;
+      height: 100px;
+      overflow-y: auto;
+    }
+    #locateBtn {
+      margin: 10px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="banner">Welcome to The Box!</div>
+<button id="locateBtn">Show my location</button>
+<div id="console">Console output</div>
+
+<script>
+  const locateBtn = document.getElementById('locateBtn');
+  const consoleDiv = document.getElementById('console');
+
+  locateBtn.addEventListener('click', () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          const { latitude, longitude } = position.coords;
+          consoleDiv.textContent = `Latitude: ${latitude}, Longitude: ${longitude}`;
+        },
+        error => {
+          consoleDiv.textContent = `Error: ${error.message}`;
+        }
+      );
+    } else {
+      consoleDiv.textContent = 'Geolocation not supported.';
+    }
+  });
+</script>
+
+</body>
+</html>
